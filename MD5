@@ -1,0 +1,13 @@
+0a197a6685c31e5f44bd0aca9b2e3d38 *DESCRIPTION
+1868600815a6fd279d056fd04dfeb434 *NAMESPACE
+47b64144a0d67460b3fb92a32c6b9678 *NEWS.md
+ca858b8ff460e40ec094b8a3d02b1d10 *R/cc.R
+5eec9d2e47c71fcc980dbf88f918235a *R/imp_assert.R
+3af3152e18af15d186c538eb2adcb7f7 *R/palette.R
+cf13b20819f61b12b95b4ad0794e1fa2 *README.md
+6736c0204117493f101eaf9b453c067d *man/assertions.Rd
+12f7dd3081c60ee7d4010b92efcfad48 *man/cc.Rd
+35a66c8b3ee40b8c603d708316ea6416 *man/plot_palette.Rd
+f5a6b6a6b35b42dcb60a77fbf0d255f0 *tests/testthat.R
+7316c3f9d039f6151f486bd928295655 *tests/testthat/test-assertions.R
+439da6854cf3d9caa7bb0393ed7d53ff *tests/testthat/test-cc.R
