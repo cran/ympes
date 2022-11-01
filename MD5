@@ -1,6 +1,6 @@
-c51b16546972577153096c4b0dac0edd *DESCRIPTION
+f77b49c416d375588263164c15b75d3e *DESCRIPTION
 f942780d234d662456ec4e3e9c0cfc15 *NAMESPACE
-0db19416a0bb1eba71fc5ac7dc3b2daa *NEWS.md
+c32ffe84cade4d87ccca728348072bf5 *NEWS.md
 8cd39744cf667815e257cfd70ff9b39e *R/ageutils.R
 ca858b8ff460e40ec094b8a3d02b1d10 *R/cc.R
 e355750675859c7ff80e57c420b542c3 *R/data.R
@@ -30,7 +30,7 @@ f9d504daec667cfe010ba6c764d04def *man/ageutils.Rd
 42abae6aaf38d291bf83be3da49004b6 *man/ympes-package.Rd
 3f03da795dd26373156bddc78d41e95d *src/Makevars
 3f03da795dd26373156bddc78d41e95d *src/Makevars.win
-a252674a200c5a2c1325f0c809986867 *src/ageutils.c
+a46f8f0bd8477f7f095bc387ca4145ef *src/ageutils.c
 01e8629c3cf2f2f0a60466c417c183ce *src/init.c
 0523f2db0c3b699ce8206454132bf4bb *tests/tinytest.R
 82d07a00ad2e361b673aeebe049b66f2 *vignettes/age_categories.Rmd

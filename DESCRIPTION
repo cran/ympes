@@ -1,7 +1,7 @@
 Package: ympes
 Type: Package
 Title: Collection of Helper Functions
-Version: 0.2.0
+Version: 0.2.1
 Authors@R: 
     c(
       person(
@@ -28,8 +28,8 @@ VignetteBuilder: knitr
 URL: https://timtaylor.github.io/ympes/
 BugReports: https://github.com/TimTaylor/ympes/issues
 NeedsCompilation: yes
-Packaged: 2022-10-26 15:44:59 UTC; tim
+Packaged: 2022-10-31 22:08:28 UTC; tim
 Author: Tim Taylor [aut, cre, cph] (<https://orcid.org/0000-0002-8587-7113>)
 Maintainer: Tim Taylor <tim.taylor@hiddenelephants.co.uk>
 Repository: CRAN
-Date/Publication: 2022-10-26 16:00:01 UTC
+Date/Publication: 2022-11-01 13:50:02 UTC
