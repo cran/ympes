@@ -2,19 +2,33 @@
 #'
 #' `plot_palette()` plots a palette from a vector of colour values (name or hex).
 #'
-#' @param values character vector of named or hex colours.
-#' @param label boolean. Do you want to label the plot or not? If `values` is
-#'   a named vector the names are used for labels, otherwise, the values.
-#' @param square boolean. Display palette as square?
+#' @param values `[character]`
 #'
-#' @return The input (invisibly).
+#' Vector of named or hex colours.
+#'
+#' @param label `[bool]`
+#'
+#' Do you want to label the plot or not?
+#'
+#' If `values` is a named vector the names are used for labels, otherwise,
+#' the values.
+#'
+#' @param square `[bool]`
+#'
+#' Display palette as square?
+#'
+#' @return
+#'
+#' The input (invisibly).
 #'
 #' @examples
+#'
 #' plot_palette(c("#5FE756", "red", "black"))
 #' plot_palette(c("#5FE756", "red", "black"), square=TRUE)
 #'
 #' @importFrom graphics axis image text
 #' @importFrom grDevices col2rgb
+#'
 #' @export
 plot_palette <- function(values, label = TRUE, square = FALSE) {
 
@@ -39,7 +53,7 @@ plot_palette <- function(values, label = TRUE, square = FALSE) {
         remainder <- total - n
         cols <- c(values, rep("white", remainder))
         lbls <- c(lbls, rep("", remainder))
-        x = apply(matrix(total:1, dimension), 2, rev)
+        x <- apply(matrix(total:1, dimension), 2, rev)
         if (n == 1) {
             image(matrix(1), col = values, axes = FALSE, lab.breaks = NULL)
             if (label)

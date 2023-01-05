@@ -2,13 +2,16 @@
 % Please edit documentation in R/ageutils.R
 \name{ageutils}
 \alias{ageutils}
-\alias{ages_to_interval}
+\alias{breaks_to_interval}
+\alias{cut_ages}
 \alias{split_interval_counts}
 \alias{aggregate_age_counts}
 \alias{reaggregate_interval_counts}
 \title{Utilities for Age Intervals}
 \usage{
-ages_to_interval(ages, limits = c(1L, 5L, 15L, 25L, 45L, 65L))
+breaks_to_interval(breaks)
+
+cut_ages(ages, breaks)
 
 split_interval_counts(
   lower_bounds,
@@ -18,55 +21,55 @@ split_interval_counts(
   weights = NULL
 )
 
-aggregate_age_counts(
-  counts,
-  ages = 0:(length(counts) - 1L),
-  limits = c(1L, 5L, 15L, 25L, 45L, 65L)
-)
+aggregate_age_counts(counts, ages = 0:(length(counts) - 1L), breaks)
 
 reaggregate_interval_counts(
   lower_bounds,
   upper_bounds,
   counts,
-  limits = c(1L, 5L, 15L, 25L, 45L, 65L),
+  breaks,
   max_upper = 100L,
   weights = NULL
 )
 }
 \arguments{
-\item{ages}{\verb{[integerish]}.
+\item{breaks}{\verb{[numeric]}.
+
+1 or more non-negative cut points in increasing (strictly) order.
+
+These correspond to the left hand side of the desired intervals (e.g. the
+closed side of "[x, y)".
+
+Double values are coerced to integer prior to categorisation.}
+
+\item{ages}{\verb{[numeric]}.
+
 Vector of age in years.
 
-Double values will be coerced to integer prior to categorisation /
-aggregation.
+Double values are coerced to integer prior to categorisation / aggregation.
 
-For \code{aggregate_age_counts()}, these must corresponding to the \code{counts}
-entry and will defaults to 0:(N-1) where \code{N} is the number of counts
-present.
+For \code{aggregate_age_counts()}, these must corresponding to the \code{counts} entry
+and will defaults to 0:(N-1) where \code{N} is the number of counts present.
 
 \code{ages} >= 200 are not permitted due to the internal implementation.}
 
-\item{limits}{\verb{[integerish]}.
-1 or more positive cut points in increasing (strictly) order.
-
-Defaults to c(1L,5L,15L,25L,45L,65L).
-
-Double values will be coerced to integer prior to categorisation.}
-
 \item{lower_bounds, upper_bounds}{\verb{[integerish]}.
+
 A pair of vectors representing the bounds of the intervals.
 
-\code{lower_bounds} must be strictly less than \code{upper_bounds} and greater than
-or equal to zero.
+\code{lower_bounds} must be strictly less than \code{upper_bounds} and greater than or
+equal to zero.
 
 Missing (NA) bounds are not permitted.
 
 Double vectors will be coerced to integer.}
 
 \item{counts}{\verb{[numeric]}.
+
 Vector of counts to be aggregated.}
 
 \item{max_upper}{\verb{[integerish]}
+
 Represents the maximum upper bounds permitted upon splitting the data.
 
 Used to replace \code{Inf} upper bounds prior to splitting.
@@ -76,6 +79,7 @@ If any \code{upper_bound} is greater than \code{max_upper} the function will err
 Double vectors will be coerced to integer.}
 
 \item{weights}{\verb{[numeric]}
+
 Population weightings to apply for individual years.
 
 If \code{NULL} (default) counts will be split evenly based on interval size.
@@ -84,47 +88,58 @@ If specified, must be of length \code{max_upper} and represent weights in the
 range 0:(max_upper - 1).}
 }
 \value{
-\itemize{
-\item \code{ages_to_interval()}.
+\code{breaks_to_interval()}, \code{cut_ages()}:
+
 A data frame with an ordered factor column (\code{interval}), as well as columns
 corresponding to the explicit bounds (\code{lower_bound} and \code{upper_bound}).
-\item \code{split_interval_counts()}.
+
+\code{split_interval_counts()}:
+
 A data frame with entries \code{age} (in years) and \code{count}.
-\item \code{aggregate_age_counts()} and \code{reaggregate_interval_counts()}.
-A data frame with 4 entries; \code{interval}, \code{lower_bound}, \code{upper_bound} and
-an associated \code{count}.
-}
+
+\code{aggregate_age_counts()} and \code{reaggregate_interval_counts()}:
+
+A data frame with 4 entries; \code{interval}, \code{lower_bound}, \code{upper_bound} and an
+associated \code{count}.
 }
 \description{
 This help page documents the utility functions provided for working with
 age intervals:
-\itemize{
-\item \code{ages_to_interval()} provides categorisation of ages based on specified
-right-hand interval limits. The resultant groupings will span the natural
-numbers (from 0) and will always be closed on the left and open on the
-right. For example, if \code{limits = c(1,10,30)} the possible groupings will be
-"[0, 1)", "[1, 10)", "[10, 30)" and "[30, Inf)". This is roughly comparable
-to a call of \code{cut(ages, right = FALSE, breaks = c(0, limits))} but with the
-start and end points of the interval returned as entries in a list.
-\item \code{split_interval_counts()} splits counts within a age interval in to counts
-for individuals years based on a given weighting. Age intervals are
-specified by their lower (closed) and upper (open) bounds, i.e. intervals
-of the form [lower, upper).
-\item \code{aggregate_age_counts()} provides aggregation of counts across ages (in
+
+\code{breaks_to_interval()} takes a specified set of breaks representing the left
+hand limits of a closed open interval, i.e [x, y), and returns the
+corresponding interval and upper bounds. The resulting intervals span from
+the minimum break through to \code{Inf}.
+
+\code{cut_ages()} provides categorisation of ages based on specified breaks which
+represent the left-hand interval limits. The resultant groupings will span
+from the minimum break through to \code{Inf} and will always be closed on the left
+and open on the right. Ages below the minimum break will be returned as NA.
+As an example, if \code{breaks = c(0, 1, 10, 30)} the possible groupings would be
+[0, 1), [1, 10), [10, 30) and [30, Inf). This is roughly comparable
+to a call of \code{cut(ages, right = FALSE, breaks = c(limits, Inf))} but with
+both the resultant interval and the start and end points returned as entries
+in a list.
+
+\code{split_interval_counts()} splits counts of a given age interval in to counts
+for individual years based on a given weighting. Age intervals are specified
+by their lower (closed) and upper (open) bounds, i.e. intervals of the form
+[lower, upper).
+
+\code{aggregate_age_counts()} provides aggregation of counts across ages (in
 years). It is similar to a \code{cut()} and \code{tapply()} pattern but optimised for
 speed over flexibility. Groupings are the same as in \code{ages_to_interval()}
-and counts will be provided across all natural numbers as well as for
-missing values.
-\item \code{reaggregate_interval_counts()} is equivalent to, but more efficient than,
-calling \code{split_interval_counts()} and then \code{aggregate_age_counts()}.
-}
+and counts will be provided across all natural numbers grater than the
+minimum break. Missing values, and those less than the minimum break, are
+grouped as NA.
+
+\code{reaggregate_interval_counts()} is equivalent to, but more efficient than,
+a call to \code{split_interval_counts()} followed by \code{aggregate_age_counts()}.
 }
 \examples{
 
-# limits are set to c(1L,5L,15L,25L,45L,65L) by default
-ages_to_interval(ages = 0:9, limits = c(3L, 5L, 10L))
-ages_to_interval(ages = 0:9)
-ages_to_interval(ages = 0:9, limits = c(1L, 5L, 15L, 25L, 45L, 65L))
+cut_ages(ages = 0:9, breaks = c(0L, 3L, 5L, 10L))
+cut_ages(ages = 0:9, breaks = 5L)
 
 split_interval_counts(
     lower_bounds = c(0, 5, 10),
@@ -133,8 +148,8 @@ split_interval_counts(
 )
 
 # default ages generated if only counts provided (here ages will be 0:64)
-aggregate_age_counts(counts = 1:65, limits = c(1L, 5L, 15L, 25L, 45L, 65L))
-aggregate_age_counts(counts = 1:65, limits = 50)
+aggregate_age_counts(counts = 1:65, breaks = c(0L, 1L, 5L, 15L, 25L, 45L, 65L))
+aggregate_age_counts(counts = 1:65, breaks = 50L)
 
 # NA ages are handled with their own grouping
 ages <- 1:65;
@@ -142,14 +157,14 @@ ages[1:44] <- NA
 aggregate_age_counts(
     counts = 1:65,
     ages = ages,
-    limits = c(1L, 5L, 15L, 25L, 45L, 65L)
+    breaks = c(0L, 1L, 5L, 15L, 25L, 45L, 65L)
 )
 
 reaggregate_interval_counts(
     lower_bounds = c(0, 5, 10),
     upper_bounds = c(5, 10, 20),
     counts = c(5, 10, 30),
-    limits = c(1L, 5L, 15L, 25L, 45L, 65L)
+    breaks = c(0L, 1L, 5L, 15L, 25L, 45L, 65L)
 )
 
 }

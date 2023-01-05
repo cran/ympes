@@ -6,13 +6,13 @@ knitr::opts_chunk$set(
 
 ## -----------------------------------------------------------------------------
 library(ympes)
+breaks_to_interval(breaks = c(0L, 1L, 5L, 15L, 25L, 45L, 65L))
 
-ages_to_interval(ages = 0:9, limits = c(1L, 5L, 15L, 25L, 45L, 65L))
-
-ages_to_interval(1:10, limits = 6L)
-
-str(x <- ages_to_interval(1:100))
-
+## -----------------------------------------------------------------------------
+cut_ages(ages = 0:9, breaks = c(0L, 1L, 5L, 15L, 25L, 45L, 65L))
+cut_ages(1:10, breaks = 6L)
+x <- cut_ages(1:100, breaks = c(0L, 1L, 5L, 15L, 25L, 45L, 65L))
+str(x)
 head(x$interval)
 
 ## -----------------------------------------------------------------------------
@@ -39,17 +39,18 @@ split_interval_counts(
 
 ## -----------------------------------------------------------------------------
 # default ages generated as 0:(length(counts) - 1L) if only counts provided.
-aggregate_age_counts(counts = 1:65, limits = c(1L, 5L, 15L, 25L, 45L, 65L))
+aggregate_age_counts(counts = 1:65, breaks = c(0L, 1L, 5L, 15L, 25L, 45L, 65L))
 
-aggregate_age_counts(counts = 1:65, limits = 50)
+# Values below the minimum break are counted as NA
+aggregate_age_counts(counts = 1:65, breaks = 50L)
 
-# NA ages are handled with their own grouping
-ages <- 1:65;
+# NA ages are also handled with their own grouping
+ages <- 1:65
 ages[1:44] <- NA
 aggregate_age_counts(
     counts = 1:65,
     ages = ages,
-    limits = c(1L, 5L, 15L, 25L, 45L, 65L)
+    breaks = c(0L, 1L, 5L, 15L, 25L, 45L, 65L)
 )
 
 ## -----------------------------------------------------------------------------
@@ -67,16 +68,16 @@ dat <- transform(
     upper_bound = as.numeric(sub(".+, (.+))", "\\1", age_category))
 )
 
-head(dat, n =10)
+head(dat, n=10)
 
 # recategorise based on ages
 with(
-    dat, 
+    dat,
     reaggregate_interval_counts(
         lower_bounds = lower_bound,
         upper_bounds = upper_bound,
         counts = value,
-        limits = c(1L, 5L, 15L, 25L, 45L, 65L),
+        breaks = c(0L, 1L, 5L, 15L, 25L, 45L, 65L),
         max_upper = 100L,
         weights = NULL
     )

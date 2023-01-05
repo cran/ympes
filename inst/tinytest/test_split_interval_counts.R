@@ -33,7 +33,7 @@ result_2 <- split_interval_counts(
     lower_bounds = c(1, 2, NA,  2, 1, NA, 4),
     upper_bounds = c(3, 3,  1, NA, 3, NA, 6),
     counts =       c(1, 1,  1,  1, 1,  1, NA_real_),
-    weights = c(1,3,1,1,1,1),
+    weights = c(1, 3, 1, 1, 1, 1),
     max_upper = 6
 )
 
@@ -81,7 +81,7 @@ expect_error(
         upper_bounds = c(3, 3,  1, NA, 3, NA, 6),
         counts =       c(1, 1,  1,  1, 1,  1, NA_real_)
     ),
-    "`lower_bounds` must be integer(ish).",
+    "`lower_bounds` must be numeric.",
     fixed = TRUE
 )
 
@@ -91,7 +91,7 @@ expect_error(
         upper_bounds = as.character(c(3, 3,  1, NA, 3, NA, 6)),
         counts =       c(1, 1,  1,  1, 1,  1, NA_real_)
     ),
-    "`upper_bounds` must be integer(ish).",
+    "`upper_bounds` must be numeric.",
     fixed = TRUE
 )
 

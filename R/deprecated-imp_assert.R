@@ -1,4 +1,11 @@
-#' Argument assertions
+#' Deprecated assertion functions
+#'
+#' @description
+#'
+#' These assertions functions are now deprecated and may be defunct as soon as
+#' the next release of ympes.
+#'
+#' @details
 #'
 #' Assertions for function arguments. Motivated by `vctrs::vec_assert()` but
 #' with lower overhead at a cost of less informative error messages. Designed to
@@ -12,39 +19,22 @@
 #' @return The input argument (invisibly) if the assertion succeeds (error
 #' otherwise).
 #'
-#' @examples
-#'
-#' # Use in a user facing function
-#' fun <- function(i, d, l, chr, b) {
-#'     imp_assert_scalar_int(i)
-#'     TRUE
-#' }
-#' fun(i=1L)
-#' try(fun())
-#' try(fun(i="cat"))
-#'
-#' # Use in an internal function
-#' internal_fun <- function(a) {
-#'     imp_assert_string(a, arg = deparse(substitute(a)), call = sys.call(-1L))
-#'     TRUE
-#' }
-#' external_fun <- function(b) {
-#'     internal_fun(a=b)
-#' }
-#' external_fun(b="cat")
-#' try(external_fun())
-#' try(external_fun(a = letters))
-#'
-#' @name assertions
+#' @name imp_assert-deprecated
+#' @keywords internal
 NULL
 
 # -------------------------------------------------------------------------
 # General assertions ------------------------------------------------------
 # -------------------------------------------------------------------------
 
-#' @rdname assertions
+#' @rdname imp_assert-deprecated
 #' @export
 imp_assert_integer <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
+    old <- as.character(sys.call()[1L])
+    new <- sub(pattern = "imp_", replacement = "", x = old, fixed = TRUE)
+    msg <- sprintf("`%s` is deprecated. Use `%s` instead.", old, new)
+    .Deprecated(msg = msg)
+
     if (missing(x)) {
         msg <- sprintf("argument `%s` is missing, with no default.", arg)
         stop(simpleError(msg, call[1L]))
@@ -56,13 +46,18 @@ imp_assert_integer <- function(x, arg = deparse(substitute(x)), call = sys.call(
     invisible(x)
 }
 
-#' @rdname assertions
+#' @rdname imp_assert-deprecated
 #' @export
 imp_assert_int <- imp_assert_integer
 
-#' @rdname assertions
+#' @rdname imp_assert-deprecated
 #' @export
 imp_assert_double <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
+    old <- as.character(sys.call()[1L])
+    new <- sub(pattern = "imp_", replacement = "", x = old, fixed = TRUE)
+    msg <- sprintf("`%s` is deprecated. Use `%s` instead.", old, new)
+    .Deprecated(msg = msg)
+
     if (missing(x)) {
         msg <- sprintf("argument `%s` is missing, with no default.", arg)
         stop(simpleError(msg, call[1L]))
@@ -74,13 +69,18 @@ imp_assert_double <- function(x, arg = deparse(substitute(x)), call = sys.call(-
     invisible(x)
 }
 
-#' @rdname assertions
+#' @rdname imp_assert-deprecated
 #' @export
 imp_assert_dbl <- imp_assert_double
 
-#' @rdname assertions
+#' @rdname imp_assert-deprecated
 #' @export
 imp_assert_numeric <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
+    old <- as.character(sys.call()[1L])
+    new <- sub(pattern = "imp_", replacement = "", x = old, fixed = TRUE)
+    msg <- sprintf("`%s` is deprecated. Use `%s` instead.", old, new)
+    .Deprecated(msg = msg)
+
     if (missing(x)) {
         msg <- sprintf("argument `%s` is missing, with no default.", arg)
         stop(simpleError(msg, call[1L]))
@@ -92,13 +92,18 @@ imp_assert_numeric <- function(x, arg = deparse(substitute(x)), call = sys.call(
     invisible(x)
 }
 
-#' @rdname assertions
+#' @rdname imp_assert-deprecated
 #' @export
 imp_assert_num <- imp_assert_numeric
 
-#' @rdname assertions
+#' @rdname imp_assert-deprecated
 #' @export
 imp_assert_logical <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
+    old <- as.character(sys.call()[1L])
+    new <- sub(pattern = "imp_", replacement = "", x = old, fixed = TRUE)
+    msg <- sprintf("`%s` is deprecated. Use `%s` instead.", old, new)
+    .Deprecated(msg = msg)
+
     if (missing(x)) {
         msg <- sprintf("argument `%s` is missing, with no default.", arg)
         stop(simpleError(msg, call[1L]))
@@ -110,13 +115,17 @@ imp_assert_logical <- function(x, arg = deparse(substitute(x)), call = sys.call(
     invisible(x)
 }
 
-#' @rdname assertions
+#' @rdname imp_assert-deprecated
 #' @export
 imp_assert_lgl <- imp_assert_logical
 
-#' @rdname assertions
+#' @rdname imp_assert-deprecated
 #' @export
 imp_assert_character <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
+    old <- as.character(sys.call()[1L])
+    new <- sub(pattern = "imp_", replacement = "", x = old, fixed = TRUE)
+    msg <- sprintf("`%s` is deprecated. Use `%s` instead.", old, new)
+    .Deprecated(msg = msg)
     if (missing(x)) {
         msg <- sprintf("argument `%s` is missing, with no default.", arg)
         stop(simpleError(msg, call[1L]))
@@ -128,13 +137,17 @@ imp_assert_character <- function(x, arg = deparse(substitute(x)), call = sys.cal
     invisible(x)
 }
 
-#' @rdname assertions
+#' @rdname imp_assert-deprecated
 #' @export
 imp_assert_chr <- imp_assert_character
 
-#' @rdname assertions
+#' @rdname imp_assert-deprecated
 #' @export
 imp_assert_data_frame <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
+    old <- as.character(sys.call()[1L])
+    new <- sub(pattern = "imp_", replacement = "", x = old, fixed = TRUE)
+    msg <- sprintf("`%s` is deprecated. Use `%s` instead.", old, new)
+    .Deprecated(msg = msg)
     if (missing(x)) {
         msg <- sprintf("argument `%s` is missing, with no default.", arg)
         stop(simpleError(msg, call[1L]))
@@ -146,9 +159,13 @@ imp_assert_data_frame <- function(x, arg = deparse(substitute(x)), call = sys.ca
     invisible(x)
 }
 
-#' @rdname assertions
+#' @rdname imp_assert-deprecated
 #' @export
 imp_assert_list <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
+    old <- as.character(sys.call()[1L])
+    new <- sub(pattern = "imp_", replacement = "", x = old, fixed = TRUE)
+    msg <- sprintf("`%s` is deprecated. Use `%s` instead.", old, new)
+    .Deprecated(msg = msg)
     if (missing(x)) {
         msg <- sprintf("argument `%s` is missing, with no default.", arg)
         stop(simpleError(msg, call[1L]))
@@ -164,9 +181,14 @@ imp_assert_list <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L
 # Scalar assertions -------------------------------------------------------
 # -------------------------------------------------------------------------
 
-#' @rdname assertions
+#' @rdname imp_assert-deprecated
 #' @export
 imp_assert_scalar_integer <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
+    old <- as.character(sys.call()[1L])
+    new <- sub(pattern = "imp_", replacement = "", x = old, fixed = TRUE)
+    msg <- sprintf("`%s` is deprecated. Use `%s` instead.", old, new)
+    .Deprecated(msg = msg)
+
     if (missing(x)) {
         msg <- sprintf("argument `%s` is missing, with no default.", arg)
         stop(simpleError(msg, call[1L]))
@@ -178,14 +200,19 @@ imp_assert_scalar_integer <- function(x, arg = deparse(substitute(x)), call = sy
     invisible(x)
 }
 
-#' @rdname assertions
+#' @rdname imp_assert-deprecated
 #' @export
 imp_assert_scalar_int <- imp_assert_scalar_integer
 
 
-#' @rdname assertions
+#' @rdname imp_assert-deprecated
 #' @export
 imp_assert_scalar_double <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
+    old <- as.character(sys.call()[1L])
+    new <- sub(pattern = "imp_", replacement = "", x = old, fixed = TRUE)
+    msg <- sprintf("`%s` is deprecated. Use `%s` instead.", old, new)
+    .Deprecated(msg = msg)
+
     if (missing(x)) {
         msg <- sprintf("argument `%s` is missing, with no default.", arg)
         stop(simpleError(msg, call[1L]))
@@ -197,13 +224,18 @@ imp_assert_scalar_double <- function(x, arg = deparse(substitute(x)), call = sys
     invisible(x)
 }
 
-#' @rdname assertions
+#' @rdname imp_assert-deprecated
 #' @export
 imp_assert_scalar_dbl <- imp_assert_scalar_double
 
-#' @rdname assertions
+#' @rdname imp_assert-deprecated
 #' @export
 imp_assert_scalar_numeric <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
+    old <- as.character(sys.call()[1L])
+    new <- sub(pattern = "imp_", replacement = "", x = old, fixed = TRUE)
+    msg <- sprintf("`%s` is deprecated. Use `%s` instead.", old, new)
+    .Deprecated(msg = msg)
+
     if (missing(x)) {
         msg <- sprintf("argument `%s` is missing, with no default.", arg)
         stop(simpleError(msg, call[1L]))
@@ -215,13 +247,18 @@ imp_assert_scalar_numeric <- function(x, arg = deparse(substitute(x)), call = sy
     invisible(x)
 }
 
-#' @rdname assertions
+#' @rdname imp_assert-deprecated
 #' @export
 imp_assert_scalar_num <- imp_assert_scalar_numeric
 
-#' @rdname assertions
+#' @rdname imp_assert-deprecated
 #' @export
 imp_assert_scalar_logical <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
+    old <- as.character(sys.call()[1L])
+    new <- sub(pattern = "imp_", replacement = "", x = old, fixed = TRUE)
+    msg <- sprintf("`%s` is deprecated. Use `%s` instead.", old, new)
+    .Deprecated(msg = msg)
+
     if (missing(x)) {
         msg <- sprintf("argument `%s` is missing, with no default.", arg)
         stop(simpleError(msg, call[1L]))
@@ -233,13 +270,18 @@ imp_assert_scalar_logical <- function(x, arg = deparse(substitute(x)), call = sy
     invisible(x)
 }
 
-#' @rdname assertions
+#' @rdname imp_assert-deprecated
 #' @export
 imp_assert_scalar_lgl <- imp_assert_scalar_logical
 
-#' @rdname assertions
+#' @rdname imp_assert-deprecated
 #' @export
 imp_assert_bool <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
+    old <- as.character(sys.call()[1L])
+    new <- sub(pattern = "imp_", replacement = "", x = old, fixed = TRUE)
+    msg <- sprintf("`%s` is deprecated. Use `%s` instead.", old, new)
+    .Deprecated(msg = msg)
+
     if (missing(x)) {
         msg <- sprintf("argument `%s` is missing, with no default.", arg)
         stop(simpleError(msg, call[1L]))
@@ -251,13 +293,18 @@ imp_assert_bool <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L
     invisible(x)
 }
 
-#' @rdname assertions
+#' @rdname imp_assert-deprecated
 #' @export
 imp_assert_boolean <- imp_assert_bool
 
-#' @rdname assertions
+#' @rdname imp_assert-deprecated
 #' @export
 imp_assert_scalar_character <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
+    old <- as.character(sys.call()[1L])
+    new <- sub(pattern = "imp_", replacement = "", x = old, fixed = TRUE)
+    msg <- sprintf("`%s` is deprecated. Use `%s` instead.", old, new)
+    .Deprecated(msg = msg)
+
     if (missing(x)) {
         msg <- sprintf("argument `%s` is missing, with no default.", arg)
         stop(simpleError(msg, call[1L]))
@@ -269,12 +316,17 @@ imp_assert_scalar_character <- function(x, arg = deparse(substitute(x)), call = 
     invisible(x)
 }
 
-#' @rdname assertions
+#' @rdname imp_assert-deprecated
 #' @export
 imp_assert_scalar_chr <- imp_assert_scalar_character
 
-#' @rdname assertions
+#' @rdname imp_assert-deprecated
 #' @export
 imp_assert_string <- function(x, arg = deparse(substitute(x)), call = sys.call(-1L)) {
+    old <- as.character(sys.call()[1L])
+    new <- sub(pattern = "imp_", replacement = "", x = old, fixed = TRUE)
+    msg <- sprintf("`%s` is deprecated. Use `%s` instead.", old, new)
+    .Deprecated(msg = msg)
+
     imp_assert_scalar_chr(x = x, arg = arg, call = call)
 }

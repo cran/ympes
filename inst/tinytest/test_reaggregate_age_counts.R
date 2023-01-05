@@ -3,7 +3,7 @@ lower_bounds <- c(1, 2, NA,  2, 1, NA, 4, 6)
 upper_bounds <- c(3, 3,  1, NA, 3, NA, 6, Inf)
 counts <- c(1, 1,  1,  1, 1,  1, NA_real_, 10)
 max_upper <- 100
-limits <- c(1,2,6)
+breaks <- c(0, 1, 2, 6)
 
 expected <- data.frame(
     interval = factor(
@@ -13,7 +13,7 @@ expected <- data.frame(
     ),
     lower_bound = c(0, 1, 2, 6, NA),
     upper_bound = c(1, 2, 6, Inf, NA),
-    count = c(0,1,NA,10,3)
+    count = c(0, 1, NA, 10, 3)
 )
 
 expect_equal(
@@ -21,7 +21,7 @@ expect_equal(
         lower_bounds = lower_bounds,
         upper_bounds = upper_bounds,
         counts = counts,
-        limits = limits,
+        breaks = breaks,
         max_upper = max_upper
     ),
     expected
@@ -38,7 +38,7 @@ expected <- data.frame(
     ),
     lower_bound = c(0, 1, 2, 6, NA),
     upper_bound = c(1, 2, 6, Inf, NA),
-    count = c(0,1.5,NA,10,3)
+    count = c(0, 1.5, NA, 10, 3)
 )
 
 expect_equal(
@@ -46,7 +46,7 @@ expect_equal(
         lower_bounds = lower_bounds,
         upper_bounds = upper_bounds,
         counts = counts,
-        limits = limits,
+        breaks = breaks,
         weights = weights,
         max_upper = max_upper
     ),
