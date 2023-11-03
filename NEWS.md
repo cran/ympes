@@ -1,3 +1,26 @@
+# ympes 0.5.0
+
+- `new_package()` will now add `.Rbuildignore` and `.Rproj` files with sensible
+  defaults.
+
+- `np()` is now given as an alias for `new_package()`.
+
+- New assertion functions:
+    - `assert_negative()`, `assert_negative_or_na()`
+    - `assert_positive()`, `assert_positive_or_na()`
+    
+    - `assert_non_negative()`, `assert_non_negative_or_na()`
+    - `assert_non_positive()`, `assert_non_positive_or_na()`
+    
+    - `assert_scalar_character_not_na()`, `assert_scalar_chr_not_na()`
+    - `assert_scalar_integer_not_na()`, `assert_scalar_int_not_na()`
+    - `assert_scalar_double_not_na()`, `assert_scalar_dbl_not_na()`
+    - `assert_scalar_numeric_not_na()`, `assert_scalar_num_not_na()`
+    
+- Functions defunct in earlier versions of {ympes} have been removed from the
+  package namespace.
+    
+
 # ympes 0.4.0
 
 - New function `new_package()` for setting up a package skeleton based on my

@@ -1,7 +1,7 @@
 Package: ympes
 Type: Package
 Title: Collection of Helper Functions
-Version: 0.4.0
+Version: 0.5.0
 Authors@R: 
     c(
       person(
@@ -26,8 +26,8 @@ URL: https://github.com/TimTaylor/ympes
 BugReports: https://github.com/TimTaylor/ympes/issues
 Imports: utils
 NeedsCompilation: no
-Packaged: 2023-03-09 16:56:09 UTC; tim
+Packaged: 2023-11-03 16:06:51 UTC; tim
 Author: Tim Taylor [aut, cre, cph] (<https://orcid.org/0000-0002-8587-7113>)
 Maintainer: Tim Taylor <tim.taylor@hiddenelephants.co.uk>
 Repository: CRAN
-Date/Publication: 2023-03-09 17:30:03 UTC
+Date/Publication: 2023-11-03 16:20:02 UTC
