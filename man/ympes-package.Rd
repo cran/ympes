@@ -6,18 +6,24 @@
 \alias{ympes-package}
 \title{ympes: Collection of Helper Functions}
 \description{
-Provides a collection of lightweight helper functions (imps) both for interactive use and for inclusion within other packages. These include minimal assertion functions with a focus on informative error messaging for both missing and incorrect function arguments as well as other functions for visualising colour palettes, quoting user input and searching rows of a data frame.
+Provides a collection of lightweight helper functions (imps) both for interactive use and for inclusion within other packages. These include functions for visualising colour palettes, quoting user input, searching rows of a data frame and capturing string tokens.
 }
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/TimTaylor/ympes}
-  \item Report bugs at \url{https://github.com/TimTaylor/ympes/issues}
+  \item \url{https://sr.ht/~tim-taylor/ympes/}
+  \item Report bugs at \url{https://lists.sr.ht/~tim-taylor/ympes}
 }
 
 }
 \author{
 \strong{Maintainer}: Tim Taylor \email{tim.taylor@hiddenelephants.co.uk} (\href{https://orcid.org/0000-0002-8587-7113}{ORCID}) [copyright holder]
+
+Other contributors:
+\itemize{
+  \item R Core Team (fstrcapture uses code from strcapture) [copyright holder]
+  \item Toby Hocking (fstrcapture uses code from nc::capture_first_vec) [copyright holder]
+}
 
 }
 \keyword{internal}

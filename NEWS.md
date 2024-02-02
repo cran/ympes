@@ -1,3 +1,14 @@
+# ympes 1.0.0
+
+- New function `fstrcapture()`. This is an (almost) drop-in replacement for
+  `strcapture()` that performs better when using Perl-compatible regexps.
+
+- **breaking change**. Assertion functions have been removed. They can still be
+  found internally (and are checked by tests) but the intention is to use them
+  as a standalone file that is copy and pasted between packages as needed.
+  
+- **Licence change**. Licence bumped from GPL-2 to GPL-3.
+
 # ympes 0.5.0
 
 - `new_package()` will now add `.Rbuildignore` and `.Rproj` files with sensible
