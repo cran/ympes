@@ -1,7 +1,7 @@
 Package: ympes
 Type: Package
 Title: Collection of Helper Functions
-Version: 1.0.0
+Version: 1.1.0
 Authors@R: c(
     person(
         given = "Tim",
@@ -23,20 +23,21 @@ Authors@R: c(
     ))
 Description: Provides a collection of lightweight helper functions (imps) both
   for interactive use and for inclusion within other packages. These include
-  functions for visualising colour palettes, quoting user input, searching rows
-  of a data frame and capturing string tokens.
+  functions for minimal input assertions, visualising colour palettes,
+  quoting user input, searching rows of a data frame and capturing string
+  tokens.
 License: GPL-3
 Encoding: UTF-8
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1
 Suggests: clipr, tinytest
 URL: https://sr.ht/~tim-taylor/ympes/
 BugReports: https://lists.sr.ht/~tim-taylor/ympes
 Imports: methods, utils
 NeedsCompilation: no
-Packaged: 2024-02-02 22:32:29 UTC; tim
+Packaged: 2024-05-13 20:00:26 UTC; tim
 Author: Tim Taylor [aut, cre, cph] (<https://orcid.org/0000-0002-8587-7113>),
   R Core Team [cph] (fstrcapture uses code from strcapture),
   Toby Hocking [cph] (fstrcapture uses code from nc::capture_first_vec)
 Maintainer: Tim Taylor <tim.taylor@hiddenelephants.co.uk>
 Repository: CRAN
-Date/Publication: 2024-02-02 22:50:02 UTC
+Date/Publication: 2024-05-13 20:20:02 UTC
