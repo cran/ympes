@@ -1,3 +1,29 @@
+# ympes 1.3.0
+
+- New assertion function `assert_scalar_whole()`.
+
+- Users can now set the condition subclass of returned errors via a  `.subclass`
+  argument. In a similar vein it is now possible to specify additional fields in
+  the returned error condition via the `...` arguments.
+  
+- **breaking change:** Exported assertion functions are no longer prefixed with
+  a dot.
+
+- **breaking change:** To allow for the additional `...` arguments in the 
+  aforementioned assertions the parameters `arg`/`call` have been renamed to
+  `.arg`/`.call` respectively and have also been shifted (position-wise) within
+  the function signatures. For example
+  
+  ```
+  assert_int(x, arg = deparse(substitute(x)), call = sys.call(-1L))
+  ```
+  
+  becomes
+  
+  ```
+  assert_int(x, ..., .arg = deparse(substitute(x)), .call = sys.call(-1L), .subclass = NULL)
+  ```
+
 # ympes 1.2.0
 
 - **breaking changes** in `fstrcapture()`:

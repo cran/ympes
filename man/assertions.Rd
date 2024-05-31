@@ -2,181 +2,402 @@
 % Please edit documentation in R/assert.R
 \name{assertions}
 \alias{assertions}
-\alias{.assert_integer}
-\alias{.assert_int}
-\alias{.assert_double}
-\alias{.assert_dbl}
-\alias{.assert_numeric}
-\alias{.assert_num}
-\alias{.assert_logical}
-\alias{.assert_lgl}
-\alias{.assert_character}
-\alias{.assert_chr}
-\alias{.assert_data_frame}
-\alias{.assert_list}
-\alias{.assert_scalar_integer}
-\alias{.assert_scalar_int}
-\alias{.assert_scalar_integer_not_na}
-\alias{.assert_scalar_int_not_na}
-\alias{.assert_scalar_double}
-\alias{.assert_scalar_dbl}
-\alias{.assert_scalar_double_not_na}
-\alias{.assert_scalar_dbl_not_na}
-\alias{.assert_scalar_numeric}
-\alias{.assert_scalar_num}
-\alias{.assert_scalar_numeric_not_na}
-\alias{.assert_scalar_num_not_na}
-\alias{.assert_scalar_logical}
-\alias{.assert_scalar_lgl}
-\alias{.assert_bool}
-\alias{.assert_boolean}
-\alias{.assert_scalar_character}
-\alias{.assert_scalar_chr}
-\alias{.assert_scalar_character_not_na}
-\alias{.assert_scalar_chr_not_na}
-\alias{.assert_string}
-\alias{.assert_non_negative_or_na}
-\alias{.assert_non_positive_or_na}
-\alias{.assert_non_negative}
-\alias{.assert_non_positive}
-\alias{.assert_positive}
-\alias{.assert_negative}
-\alias{.assert_positive_or_na}
-\alias{.assert_negative_or_na}
+\alias{assert_integer}
+\alias{assert_int}
+\alias{assert_double}
+\alias{assert_dbl}
+\alias{assert_numeric}
+\alias{assert_num}
+\alias{assert_logical}
+\alias{assert_lgl}
+\alias{assert_character}
+\alias{assert_chr}
+\alias{assert_data_frame}
+\alias{assert_list}
+\alias{assert_scalar_integer}
+\alias{assert_scalar_int}
+\alias{assert_scalar_integer_not_na}
+\alias{assert_scalar_int_not_na}
+\alias{assert_scalar_double}
+\alias{assert_scalar_dbl}
+\alias{assert_scalar_double_not_na}
+\alias{assert_scalar_dbl_not_na}
+\alias{assert_scalar_numeric}
+\alias{assert_scalar_num}
+\alias{assert_scalar_numeric_not_na}
+\alias{assert_scalar_num_not_na}
+\alias{assert_scalar_logical}
+\alias{assert_scalar_lgl}
+\alias{assert_scalar_whole}
+\alias{assert_bool}
+\alias{assert_boolean}
+\alias{assert_scalar_character}
+\alias{assert_scalar_chr}
+\alias{assert_scalar_character_not_na}
+\alias{assert_scalar_chr_not_na}
+\alias{assert_string}
+\alias{assert_non_negative_or_na}
+\alias{assert_non_positive_or_na}
+\alias{assert_non_negative}
+\alias{assert_non_positive}
+\alias{assert_positive}
+\alias{assert_negative}
+\alias{assert_positive_or_na}
+\alias{assert_negative_or_na}
 \title{Argument assertions}
 \usage{
-.assert_integer(x, arg = deparse(substitute(x)), call = sys.call(-1L))
-
-.assert_int(x, arg = deparse(substitute(x)), call = sys.call(-1L))
-
-.assert_double(x, arg = deparse(substitute(x)), call = sys.call(-1L))
-
-.assert_dbl(x, arg = deparse(substitute(x)), call = sys.call(-1L))
-
-.assert_numeric(x, arg = deparse(substitute(x)), call = sys.call(-1L))
-
-.assert_num(x, arg = deparse(substitute(x)), call = sys.call(-1L))
-
-.assert_logical(x, arg = deparse(substitute(x)), call = sys.call(-1L))
-
-.assert_lgl(x, arg = deparse(substitute(x)), call = sys.call(-1L))
-
-.assert_character(x, arg = deparse(substitute(x)), call = sys.call(-1L))
-
-.assert_chr(x, arg = deparse(substitute(x)), call = sys.call(-1L))
-
-.assert_data_frame(x, arg = deparse(substitute(x)), call = sys.call(-1L))
-
-.assert_list(x, arg = deparse(substitute(x)), call = sys.call(-1L))
-
-.assert_scalar_integer(x, arg = deparse(substitute(x)), call = sys.call(-1L))
-
-.assert_scalar_int(x, arg = deparse(substitute(x)), call = sys.call(-1L))
-
-.assert_scalar_integer_not_na(
+assert_integer(
   x,
-  arg = deparse(substitute(x)),
-  call = sys.call(-1L)
+  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
 )
 
-.assert_scalar_int_not_na(
+assert_int(
   x,
-  arg = deparse(substitute(x)),
-  call = sys.call(-1L)
+  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
 )
 
-.assert_scalar_double(x, arg = deparse(substitute(x)), call = sys.call(-1L))
-
-.assert_scalar_dbl(x, arg = deparse(substitute(x)), call = sys.call(-1L))
-
-.assert_scalar_double_not_na(
+assert_double(
   x,
-  arg = deparse(substitute(x)),
-  call = sys.call(-1L)
+  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
 )
 
-.assert_scalar_dbl_not_na(
+assert_dbl(
   x,
-  arg = deparse(substitute(x)),
-  call = sys.call(-1L)
+  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
 )
 
-.assert_scalar_numeric(x, arg = deparse(substitute(x)), call = sys.call(-1L))
-
-.assert_scalar_num(x, arg = deparse(substitute(x)), call = sys.call(-1L))
-
-.assert_scalar_numeric_not_na(
+assert_numeric(
   x,
-  arg = deparse(substitute(x)),
-  call = sys.call(-1L)
+  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
 )
 
-.assert_scalar_num_not_na(
+assert_num(
   x,
-  arg = deparse(substitute(x)),
-  call = sys.call(-1L)
+  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
 )
 
-.assert_scalar_logical(x, arg = deparse(substitute(x)), call = sys.call(-1L))
-
-.assert_scalar_lgl(x, arg = deparse(substitute(x)), call = sys.call(-1L))
-
-.assert_bool(x, arg = deparse(substitute(x)), call = sys.call(-1L))
-
-.assert_boolean(x, arg = deparse(substitute(x)), call = sys.call(-1L))
-
-.assert_scalar_character(x, arg = deparse(substitute(x)), call = sys.call(-1L))
-
-.assert_scalar_chr(x, arg = deparse(substitute(x)), call = sys.call(-1L))
-
-.assert_scalar_character_not_na(
+assert_logical(
   x,
-  arg = deparse(substitute(x)),
-  call = sys.call(-1L)
+  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
 )
 
-.assert_scalar_chr_not_na(
+assert_lgl(
   x,
-  arg = deparse(substitute(x)),
-  call = sys.call(-1L)
+  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
 )
 
-.assert_string(x, arg = deparse(substitute(x)), call = sys.call(-1L))
-
-.assert_non_negative_or_na(
+assert_character(
   x,
-  arg = deparse(substitute(x)),
-  call = sys.call(-1L)
+  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
 )
 
-.assert_non_positive_or_na(
+assert_chr(
   x,
-  arg = deparse(substitute(x)),
-  call = sys.call(-1L)
+  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
 )
 
-.assert_non_negative(x, arg = deparse(substitute(x)), call = sys.call(-1L))
+assert_data_frame(
+  x,
+  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
 
-.assert_non_positive(x, arg = deparse(substitute(x)), call = sys.call(-1L))
+assert_list(
+  x,
+  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
 
-.assert_positive(x, arg = deparse(substitute(x)), call = sys.call(-1L))
+assert_scalar_integer(
+  x,
+  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
 
-.assert_negative(x, arg = deparse(substitute(x)), call = sys.call(-1L))
+assert_scalar_int(
+  x,
+  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
 
-.assert_positive_or_na(x, arg = deparse(substitute(x)), call = sys.call(-1L))
+assert_scalar_integer_not_na(
+  x,
+  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
 
-.assert_negative_or_na(x, arg = deparse(substitute(x)), call = sys.call(-1L))
+assert_scalar_int_not_na(
+  x,
+  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_scalar_double(
+  x,
+  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_scalar_dbl(
+  x,
+  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_scalar_double_not_na(
+  x,
+  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_scalar_dbl_not_na(
+  x,
+  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_scalar_numeric(
+  x,
+  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_scalar_num(
+  x,
+  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_scalar_numeric_not_na(
+  x,
+  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_scalar_num_not_na(
+  x,
+  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_scalar_logical(
+  x,
+  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_scalar_lgl(
+  x,
+  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_scalar_whole(
+  x,
+  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_bool(
+  x,
+  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_boolean(
+  x,
+  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_scalar_character(
+  x,
+  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_scalar_chr(
+  x,
+  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_scalar_character_not_na(
+  x,
+  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_scalar_chr_not_na(
+  x,
+  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_string(
+  x,
+  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_non_negative_or_na(
+  x,
+  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_non_positive_or_na(
+  x,
+  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_non_negative(
+  x,
+  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_non_positive(
+  x,
+  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_positive(
+  x,
+  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_negative(
+  x,
+  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_positive_or_na(
+  x,
+  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
+
+assert_negative_or_na(
+  x,
+  ...,
+  .arg = deparse(substitute(x)),
+  .call = sys.call(-1L),
+  .subclass = NULL
+)
 }
 \arguments{
 \item{x}{Argument to check.}
 
-\item{arg}{\verb{[character]}
+\item{...}{Additional fields that will be added to the resulting error condition}
+
+\item{.arg}{\verb{[character]}
 
 Name of argument being checked (used in error message).}
 
-\item{call}{\verb{[call]}
+\item{.call}{\verb{[call]}
 
 Call to use in error message.}
+
+\item{.subclass}{\verb{[character]}
+
+The (optional) subclass of the returned error condition.}
 }
 \value{
 NULL if the assertion succeeds (error otherwise).
@@ -191,7 +412,7 @@ user facing function or internally.
 
 # Use in a user facing function
 fun <- function(i, d, l, chr, b) {
-    .assert_scalar_int(i)
+    assert_scalar_int(i)
     TRUE
 }
 fun(i=1L)
@@ -200,7 +421,12 @@ try(fun(i="cat"))
 
 # Use in an internal function
 internal_fun <- function(a) {
-    .assert_string(a, arg = deparse(substitute(a)), call = sys.call(-1L))
+    assert_string(
+        a,
+        .arg = deparse(substitute(x)),
+        .call = sys.call(-1L),
+        .subclass = "example_error"
+    )
     TRUE
 }
 external_fun <- function(b) {
@@ -209,5 +435,6 @@ external_fun <- function(b) {
 external_fun(b="cat")
 try(external_fun())
 try(external_fun(b = letters))
+tryCatch(external_fun(b = letters), error = class)
 
 }
