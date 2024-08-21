@@ -1,7 +1,7 @@
 Package: ympes
 Type: Package
 Title: Collection of Helper Functions
-Version: 1.3.0
+Version: 1.4.0
 Authors@R: c(
     person(
         given = "Tim",
@@ -28,18 +28,16 @@ Description: Provides a collection of lightweight helper functions (imps) both
   tokens.
 License: GPL-3
 Encoding: UTF-8
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2
 Suggests: clipr, tinytest
-URL: https://sr.ht/~tim-taylor/ympes/,
-        https://git.sr.ht/~tim-taylor/ympes
-BugReports: https://lists.sr.ht/~tim-taylor/ympes
+URL: https://timtaylor.github.io/ympes/
+BugReports: https://github.com/TimTaylor/ympes/issues
 Imports: methods, utils
-Config/runiverse/noindex: true
 NeedsCompilation: no
-Packaged: 2024-05-31 11:37:36 UTC; tim
+Packaged: 2024-08-20 20:50:38 UTC; tim
 Author: Tim Taylor [aut, cre, cph] (<https://orcid.org/0000-0002-8587-7113>),
   R Core Team [cph] (fstrcapture uses code from strcapture),
   Toby Hocking [cph] (fstrcapture uses code from nc::capture_first_vec)
 Maintainer: Tim Taylor <tim.taylor@hiddenelephants.co.uk>
 Repository: CRAN
-Date/Publication: 2024-05-31 11:50:08 UTC
+Date/Publication: 2024-08-21 00:20:01 UTC

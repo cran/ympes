@@ -4,6 +4,11 @@
 #' `greprows()` searches for pattern matches within a data frames columns and
 #' returns the related rows or row indices.
 #'
+#' `grepvrows()` is identical to `greprows()` except with the default
+#' `value = TRUE`.
+#'
+#' `greplrows()` returns a logical vector (match or not for each row of dat).
+#'
 # -------------------------------------------------------------------------
 #' @param dat Data frame
 #'
@@ -17,7 +22,8 @@
 #'
 #' Should a data frame of rows be returned.
 #'
-#' If `FALSE` row indices will be returned instead of the rows themselves.
+#' If `FALSE` (defauly) row indices will be returned instead of the rows
+#' themselves.
 #'
 #' @inheritParams base::grep
 #'
@@ -44,11 +50,16 @@
 #'
 # -------------------------------------------------------------------------
 #' @export
+#' @name greprows
+NULL
+
+#' @rdname greprows
+#' @export
 greprows <- function(
     dat,
     pattern,
     cols = NULL,
-    value = TRUE,
+    value = FALSE,
     ignore.case = FALSE,
     perl = FALSE,
     fixed = FALSE,
@@ -69,12 +80,12 @@ greprows <- function(
     } else if (is.character(cols)) {
         invalid <- cols[!cols %in% names(dat)]
         if (length(invalid)) {
-            msg <- sprintf("%s is not a valid column name", sQuote(invalid[1]))
+            msg <- sprintf("%s is not a valid column name.", sQuote(invalid[1]))
             stop(msg)
         }
 
     } else {
-        stop("`cols` must be a character vector")
+        stop("`cols` must be a character vector.")
     }
     cols <- .subset(dat, cols)
 
@@ -96,4 +107,58 @@ greprows <- function(
 
     # return the values or the index
     if (value) dat[idx,,drop = FALSE] else idx
+}
+
+
+#' @rdname greprows
+#' @export
+greplrows <- function(
+    dat,
+    pattern,
+    cols = NULL,
+    ignore.case = FALSE,
+    perl = FALSE,
+    fixed = FALSE,
+    invert = FALSE
+) {
+
+    index <- greprows(
+        dat = dat,
+        pattern = pattern,
+        cols = cols,
+        value = FALSE,
+        ignore.case = ignore.case,
+        perl = perl,
+        fixed = fixed,
+        invert = invert
+    )
+
+    out <- logical(length = nrow(dat))
+    out[index] <- TRUE
+    out
+}
+
+
+#' @rdname greprows
+#' @export
+grepvrows <- function(
+        dat,
+        pattern,
+        cols = NULL,
+        value = TRUE,
+        ignore.case = FALSE,
+        perl = FALSE,
+        fixed = FALSE,
+        invert = FALSE
+) {
+    greprows(
+        dat = dat,
+        pattern = pattern,
+        cols = cols,
+        value = value,
+        ignore.case = ignore.case,
+        perl = perl,
+        fixed = fixed,
+        invert = invert
+    )
 }

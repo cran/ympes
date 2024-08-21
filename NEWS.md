@@ -1,3 +1,15 @@
+# ympes 1.4.0
+
+- New function `grepvrows()` which is identical to `greprows()` except with the
+  default `value = TRUE`.
+  
+- New function `greplrows()` returns a logical vector (match or not for each row
+  of the supplied data frame).
+
+- **breaking change:** For consistency with `grep()`, the `value` argument of
+  `greprows()` now defaults to `FALSE`. Please set the value explicitly or use
+  the new `grepvrows()` function.
+
 # ympes 1.3.0
 
 - New assertion function `assert_scalar_whole()`.

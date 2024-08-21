@@ -2,9 +2,32 @@
 % Please edit documentation in R/greprows.R
 \name{greprows}
 \alias{greprows}
+\alias{greplrows}
+\alias{grepvrows}
 \title{Pattern matching on data frame rows}
 \usage{
 greprows(
+  dat,
+  pattern,
+  cols = NULL,
+  value = FALSE,
+  ignore.case = FALSE,
+  perl = FALSE,
+  fixed = FALSE,
+  invert = FALSE
+)
+
+greplrows(
+  dat,
+  pattern,
+  cols = NULL,
+  ignore.case = FALSE,
+  perl = FALSE,
+  fixed = FALSE,
+  invert = FALSE
+)
+
+grepvrows(
   dat,
   pattern,
   cols = NULL,
@@ -36,7 +59,8 @@ If \code{NULL} (default) all character and factor columns will be searched.}
 
 Should a data frame of rows be returned.
 
-If \code{FALSE} row indices will be returned instead of the rows themselves.}
+If \code{FALSE} (defauly) row indices will be returned instead of the rows
+themselves.}
 
 \item{ignore.case}{if \code{FALSE}, the pattern matching is \emph{case
       sensitive} and if \code{TRUE}, case is ignored during matching.}
@@ -56,6 +80,12 @@ corresponding row numbers.
 \description{
 \code{greprows()} searches for pattern matches within a data frames columns and
 returns the related rows or row indices.
+}
+\details{
+\code{grepvrows()} is identical to \code{greprows()} except with the default
+\code{value = TRUE}.
+
+\code{greplrows()} returns a logical vector (match or not for each row of dat).
 }
 \examples{
 
