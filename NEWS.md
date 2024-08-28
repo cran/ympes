@@ -1,3 +1,17 @@
+# ympes 1.5.0
+
+- `cc()` now allows you to split length one character vectors by whitespace.
+
+- **breaking change:** `cc()` no longer allows the user to send generative code
+  for the output to the system clipboard with the `.clip` argument. This
+  functionality was unreliable on some systems so has been removed until a
+  reliable implementation can be provided.
+  
+- Assertions and the `new_package()` functionality have been marked
+  experimental. Breaking changes to these functions should be considered likely.
+
+- Added an overview vignette (see `vignette("ympes", package = "ympes")`).
+
 # ympes 1.4.0
 
 - New function `grepvrows()` which is identical to `greprows()` except with the
