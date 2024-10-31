@@ -41,3 +41,32 @@ t[["elapsed"]] / t2[["elapsed"]]
 cc(dale, audrey, laura, hawk)
 cc("dale audrey laura hawk")
 
+new_name(mtcars)
+new_name(mtcars, 3L)
+
+# Use in a user facing function
+fun <- function(i, d, l, chr, b) {
+    assert_scalar_int(i)
+    TRUE
+}
+fun(i=1L)
+try(fun(i="cat"))
+
+# Use in an internal function
+internal_fun <- function(a) {
+    assert_string(
+        a,
+        .arg = deparse(substitute(x)),
+        .call = sys.call(-1L),
+        .subclass = "example_error"
+    )
+    TRUE
+}
+external_fun <- function(b) {
+    internal_fun(a=b)
+}
+
+external_fun(b="cat")
+try(external_fun(b = letters))
+tryCatch(external_fun(b = letters), error = class)
+

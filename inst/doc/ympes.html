@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<meta name="generator" content="litedown 0.1">
+<meta name="generator" content="litedown 0.3">
 <title>ympes</title>
 <style type="text/css">
 .token{&.comment{color:#007400}&.punctuation{color:#999}&.tag,&.selector{color:#aa0d91}&.boolean,&.number,&.constant,&.symbol{color:#1c00cf}&.property,&.attr-name,&.string,&.char,&.builtin{color:#c41a16}&.inserted{background-color:#ccffd8}&.deleted{background-color:#ffebe9}&.operator,&.entity,&.url,.language-css &.string,.style &.string{color:#9a6e3a}&.atrule,&.attr-value,&.keyword{color:#836c28}&.function,&.class-name{color:#dd4a68}&.regex,&.important,&.variable{color:#5c2699}&.important,&.bold{font-weight:700}&.italic{font-style:italic}}
@@ -15,12 +15,11 @@ body {
   margin: auto;
   padding: 1em;
   line-height: 1.5;
-  box-sizing: border-box;
 }
 body, .abstract, code, .footnotes, #refs { font-size: .9em; }
 li li { font-size: .95em; }
 ul:has(li > input[type="checkbox"]) { list-style: none; padding-left: 1em; }
-*, *:before, *:after { box-sizing: inherit; }
+*, :before, :after { box-sizing: border-box; }
 a { color: steelblue; }
 pre, img { max-width: 100%; }
 pre, pre:hover { white-space: pre-wrap; word-break: break-all; }
@@ -49,6 +48,10 @@ table {
   th, td { padding: 5px; }
   thead, tfoot, tr:nth-child(even) { background: #eee; }
 }
+.table-full {
+  width: 100%;
+  td { vertical-align: baseline; }
+}
 blockquote {
   color: #666;
   margin: 0;
@@ -70,6 +73,7 @@ table, .body h2 { border-bottom: 1px solid #666; }
 .cross-ref-sec::before { content: "Section "; }
 .cross-ref-fig::before, .ref-number-fig::before { content: "Figure "; }
 .cross-ref-tab::before, .ref-number-tab::before { content: "Table "; }
+.cross-ref-eqn::before, .MathJax_ref:has(mjx-mtext > mjx-c + mjx-c)::before { content: "Equation "; }
 .abstract, #refs {
   &::before { display: block; margin: 1em auto; font-weight: bold; }
 }
@@ -90,7 +94,7 @@ section.footnotes {
 }
 
 @media print {
-  body { font-size: 12pt; max-width: 100%; }
+  body { max-width: 100%; }
   tr, img { page-break-inside: avoid; }
 }
 @media only screen and (min-width: 992px) {
@@ -111,7 +115,7 @@ found useful at one time or another and, more importantly, remembered to include
 here!</p>
 <pre><code class="language-r">library(ympes)
 </code></pre>
-<h2 id="sec-visualising-palettes">Visualising palettes</h2>
+<h2 id="sec:visualising-palettes">Visualising palettes</h2>
 <p>I often want to quickly see what a palette looks like to ensure I can
 distinguish the different colours. The imaginatively named <code>plot_palette()</code>
 thus provides a quick overview</p>
@@ -124,7 +128,7 @@ underlying colour</p>
 <pre><code class="language-r">plot_palette(palette.colors(palette = &quot;R4&quot;), square = TRUE)
 </code></pre>
 <p><img src="data:image/png;base64,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" alt="A plot of the 8 colours that define the ‘R4’ palette. The plot is divided in to a 3 by 3 square (one square is left blank)." /></p>
-<h2 id="sec-finding-strings">Finding strings</h2>
+<h2 id="sec:finding-strings">Finding strings</h2>
 <p>Sometimes you just want to find rows of a data frame where a particular string
 occurs. <code>greprows()</code> searches for pattern matches within a data frames columns
 and returns the related rows or row indices. It is a thin wrapper around a
@@ -192,7 +196,7 @@ greprows(dat, &quot;A|b&quot;)
 #&gt; [13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
 #&gt; [25]  TRUE  TRUE
 </code></pre>
-<h2 id="sec-capturing-strings">Capturing strings</h2>
+<h2 id="sec:capturing-strings">Capturing strings</h2>
 <p>One of my favourite functions in \R is <code>strcapture()</code>. This function allows you
 to extract the captured elements of a regular expression in to a tabular data
 structure. Being able to parse input strings from a file to correctly split
@@ -214,7 +218,7 @@ an integer value.</p>
 # just a small sample to begin with
 (dat &lt;- movements(3))
 </code></pre>
-<pre><code>#&gt; [1] &quot;Bob-Up-4&quot;     &quot;Mary-Right-3&quot; &quot;Mary-Right-9&quot;
+<pre><code>#&gt; [1] &quot;Rose-Down-5&quot; &quot;Bob-Up-10&quot;   &quot;Rose-Left-5&quot;
 </code></pre>
 <pre><code class="language-r">pattern &lt;- &quot;([[:alpha:]]+)-([[:alpha:]]+)-([[:digit:]]+)&quot;
 proto   &lt;- data.frame(Name = &quot;&quot;, Direction = &quot;&quot;, Value = 1L)
@@ -230,19 +234,19 @@ strcapture(pattern, dat, proto = proto, perl = TRUE)
 </thead>
 <tbody>
 <tr>
+<td>Rose</td>
+<td>Down</td>
+<td align="right">5</td>
+</tr>
+<tr>
 <td>Bob</td>
 <td>Up</td>
-<td align="right">4</td>
+<td align="right">10</td>
 </tr>
 <tr>
-<td>Mary</td>
-<td>Right</td>
-<td align="right">3</td>
-</tr>
-<tr>
-<td>Mary</td>
-<td>Right</td>
-<td align="right">9</td>
+<td>Rose</td>
+<td>Left</td>
+<td align="right">5</td>
 </tr>
 </tbody>
 </table>
@@ -257,23 +261,23 @@ dat &lt;- movements(1e5)
 (t  &lt;- system.time(r &lt;- strcapture(pattern, dat, proto = proto, perl = TRUE)))
 </code></pre>
 <pre><code>#&gt;    user  system elapsed 
-#&gt;   0.829   0.035   0.868 
+#&gt;   0.786   0.029   0.817 
 </code></pre>
 <pre><code class="language-r">(t2 &lt;- system.time(r2 &lt;- fstrcapture(dat, pattern, proto = proto)))
 </code></pre>
 <pre><code>#&gt;    user  system elapsed 
-#&gt;   0.021   0.000   0.021 
+#&gt;   0.020   0.000   0.021 
 </code></pre>
 <pre><code class="language-r">t[[&quot;elapsed&quot;]] / t2[[&quot;elapsed&quot;]]
 </code></pre>
-<pre><code>#&gt; [1] 41.33333
+<pre><code>#&gt; [1] 38.90476
 </code></pre>
 <p>As well as the improved performance you will notice two other differences
 between the two function signatures. Firstly, to make things more pipeable, the
 data parameter <code>x</code> appears before the <code>pattern</code> parameter. Secondly,
 <code>fstrcapture()</code> works only with Perl-compatible regular expressions.</p>
-<h1 id="sec-combining-values-for-lazy-people">Combining values for lazy people</h1>
-<p><code>cc()</code> is for those of us that get fed up typeing quotation marks. It accepts
+<h2 id="sec:combining-values-for-lazy-people">Combining values for lazy people</h2>
+<p><code>cc()</code> is for those of us that get fed up typing quotation marks. It accepts
 either comma-separated, unquoted names that you wish to quote or, a
 length one character vector that you wish to split by whitespace. Intended
 mainly for interactive use only, an example is likely more enlightening than
@@ -285,6 +289,99 @@ my description</p>
 <pre><code class="language-r">cc(&quot;dale audrey laura hawk&quot;)
 </code></pre>
 <pre><code>#&gt; [1] &quot;dale&quot;   &quot;audrey&quot; &quot;laura&quot;  &quot;hawk&quot;  
+</code></pre>
+<h2 id="sec:avoid-overwriting-data-frame-columns">Avoid overwriting data frame columns</h2>
+<p>Sometimes I find myself needing to add a temporary variable to a data frame
+without kaboshing a variable already present. <code>new_name()</code> provides a simple
+wrapper around <code>tempfile()</code> that generates random column names and checks for
+their suitability. Not normally the sort of thing I’d wrap but I find myself
+writing the same code a lot so here we are</p>
+<pre><code class="language-r">new_name(mtcars)
+</code></pre>
+<pre><code>#&gt; [1] &quot;new7a105ba2ce89&quot;
+</code></pre>
+<pre><code class="language-r">new_name(mtcars, 3L)
+</code></pre>
+<pre><code>#&gt; [1] &quot;new7a1075070a36&quot; &quot;new7a102a5e0ac3&quot; &quot;new7a1010eb66f0&quot;
+</code></pre>
+<h2 id="sec:assertions-experimental">Assertions (Experimental)</h2>
+<p>Where better place for yet another implementation of bespoke assertion functions
+than a small helper package!. Motivated by <code>vctrs::vec_assert()</code> but with lower
+overhead at a cost of less flexibility. The assertion functions in ympes are
+designed to make it easy to identify the top level calling function whether used
+within a user facing function or internally. They are somewhat experimental in
+nature and should be treated accordingly!</p>
+<p>Currently implemented are:</p>
+<p><code>assert_character()</code>, <code>assert_chr()</code>,
+<code>assert_character_not_na()</code>, <code>assert_chr_not_na()</code>,
+<code>assert_scalar_character()</code>, <code>assert_scalar_chr()</code>,
+<code>assert_scalar_character_not_na()</code>, <code>assert_scalar_chr_not_na()</code>,
+<code>assert_string()</code>, <code>assert_string_not_na()</code>,</p>
+<p><code>assert_double()</code>, <code>assert_dbl()</code>,
+<code>assert_double_not_na()</code>, <code>assert_dbl_not_na()</code>,
+<code>assert_scalar_double()</code>, <code>assert_scalar_dbl()</code>,
+<code>assert_scalar_double_not_na()</code>, <code>assert_scalar_dbl_not_na()</code>,</p>
+<p><code>assert_integer()</code>, <code>assert_int()</code>,
+<code>assert_integer_not_na()</code>, <code>assert_int_not_na()</code>,
+<code>assert_scalar_integer()</code>, <code>assert_scalar_int()</code>,
+<code>assert_scalar_integer_not_na()</code>, <code>assert_scalar_int_not_na()</code>,
+<code>assert_integerish()</code>, <code>assert_whole()</code>
+<code>assert_scalar_whole()</code>, <code>assert_scalar_integerish()</code>,</p>
+<p><code>assert_logical()</code>, <code>assert_lgl()</code>,
+<code>assert_logical_not_na()</code>, <code>assert_lgl_not_na()</code>,
+<code>assert_scalar_logical()</code>, <code>assert_scalar_lgl()</code>,
+<code>assert_scalar_logical_not_na()</code>, <code>assert_scalar_lgl_not_na()</code>,
+<code>assert_bool()</code>, <code>assert_boolean()</code>,</p>
+<p><code>assert_list()</code>,
+<code>assert_data_frame()</code>,</p>
+<p><code>assert_negative()</code>, <code>assert_negative_or_na()</code>,
+<code>assert_positive()</code>, <code>assert_positive_or_na()</code>,
+<code>assert_non_negative()</code>, <code>assert_non_negative_or_na()</code>,
+<code>assert_non_positive()</code>, <code>assert_non_positive_or_na()</code>,</p>
+<p><code>assert_numeric()</code>, <code>assert_num()</code>,
+<code>assert_numeric_not_na()</code>, <code>assert_num_not_na()</code>,
+<code>assert_scalar_numeric()</code>, <code>assert_scalar_num()</code>,
+<code>assert_scalar_numeric_not_na()</code>, <code>assert_scalar_num_not_na()</code>,</p>
+<p><code>assert_between()</code></p>
+<p>Hopefully most of these are self-explanatory but there is some opinionated
+(currently undocumented) handling of NA so care should be taken to inspect
+the underlying source code before using.</p>
+<p>Currently these assertions return NULL if the assertion succeeds. Otherwise an
+error of class “ympes-error” (with optional subclass if supplied when calling
+the assertion).</p>
+<pre><code class="language-r"># Use in a user facing function
+fun &lt;- function(i, d, l, chr, b) {
+    assert_scalar_int(i)
+    TRUE
+}
+fun(i=1L)
+</code></pre>
+<pre><code>#&gt; [1] TRUE
+</code></pre>
+<pre><code class="language-r">try(fun(i=&quot;cat&quot;))
+
+# Use in an internal function
+internal_fun &lt;- function(a) {
+    assert_string(
+        a,
+        .arg = deparse(substitute(x)),
+        .call = sys.call(-1L),
+        .subclass = &quot;example_error&quot;
+    )
+    TRUE
+}
+external_fun &lt;- function(b) {
+    internal_fun(a=b)
+}
+
+external_fun(b=&quot;cat&quot;)
+</code></pre>
+<pre><code>#&gt; [1] TRUE
+</code></pre>
+<pre><code class="language-r">try(external_fun(b = letters))
+tryCatch(external_fun(b = letters), error = class)
+</code></pre>
+<pre><code>#&gt; [1] &quot;example_error&quot; &quot;ympes-error&quot;   &quot;error&quot;         &quot;condition&quot;    
 </code></pre>
 </div>
 <script>
