@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<meta name="generator" content="litedown 0.3">
+<meta name="generator" content="litedown 0.4">
 <title>ympes</title>
 <style type="text/css">
 .token{&.comment{color:#007400}&.punctuation{color:#999}&.tag,&.selector{color:#aa0d91}&.boolean,&.number,&.constant,&.symbol{color:#1c00cf}&.property,&.attr-name,&.string,&.char,&.builtin{color:#c41a16}&.inserted{background-color:#ccffd8}&.deleted{background-color:#ffebe9}&.operator,&.entity,&.url,.language-css &.string,.style &.string{color:#9a6e3a}&.atrule,&.attr-value,&.keyword{color:#836c28}&.function,&.class-name{color:#dd4a68}&.regex,&.important,&.variable{color:#5c2699}&.important,&.bold{font-weight:700}&.italic{font-style:italic}}
@@ -218,7 +218,7 @@ an integer value.</p>
 # just a small sample to begin with
 (dat &lt;- movements(3))
 </code></pre>
-<pre><code>#&gt; [1] &quot;Rose-Down-5&quot; &quot;Bob-Up-10&quot;   &quot;Rose-Left-5&quot;
+<pre><code>#&gt; [1] &quot;Bob-Up-1&quot;    &quot;Bob-Right-7&quot; &quot;Bob-Up-1&quot;   
 </code></pre>
 <pre><code class="language-r">pattern &lt;- &quot;([[:alpha:]]+)-([[:alpha:]]+)-([[:digit:]]+)&quot;
 proto   &lt;- data.frame(Name = &quot;&quot;, Direction = &quot;&quot;, Value = 1L)
@@ -234,19 +234,19 @@ strcapture(pattern, dat, proto = proto, perl = TRUE)
 </thead>
 <tbody>
 <tr>
-<td>Rose</td>
-<td>Down</td>
-<td align="right">5</td>
+<td>Bob</td>
+<td>Up</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td>Bob</td>
+<td>Right</td>
+<td align="right">7</td>
 </tr>
 <tr>
 <td>Bob</td>
 <td>Up</td>
-<td align="right">10</td>
-</tr>
-<tr>
-<td>Rose</td>
-<td>Left</td>
-<td align="right">5</td>
+<td align="right">1</td>
 </tr>
 </tbody>
 </table>
@@ -261,7 +261,7 @@ dat &lt;- movements(1e5)
 (t  &lt;- system.time(r &lt;- strcapture(pattern, dat, proto = proto, perl = TRUE)))
 </code></pre>
 <pre><code>#&gt;    user  system elapsed 
-#&gt;   0.786   0.029   0.817 
+#&gt;   0.819   0.022   0.845 
 </code></pre>
 <pre><code class="language-r">(t2 &lt;- system.time(r2 &lt;- fstrcapture(dat, pattern, proto = proto)))
 </code></pre>
@@ -270,7 +270,7 @@ dat &lt;- movements(1e5)
 </code></pre>
 <pre><code class="language-r">t[[&quot;elapsed&quot;]] / t2[[&quot;elapsed&quot;]]
 </code></pre>
-<pre><code>#&gt; [1] 38.90476
+<pre><code>#&gt; [1] 40.2381
 </code></pre>
 <p>As well as the improved performance you will notice two other differences
 between the two function signatures. Firstly, to make things more pipeable, the
@@ -298,11 +298,11 @@ their suitability. Not normally the sort of thing I’d wrap but I find myself
 writing the same code a lot so here we are</p>
 <pre><code class="language-r">new_name(mtcars)
 </code></pre>
-<pre><code>#&gt; [1] &quot;new7a105ba2ce89&quot;
+<pre><code>#&gt; [1] &quot;new127033b9b8f63&quot;
 </code></pre>
 <pre><code class="language-r">new_name(mtcars, 3L)
 </code></pre>
-<pre><code>#&gt; [1] &quot;new7a1075070a36&quot; &quot;new7a102a5e0ac3&quot; &quot;new7a1010eb66f0&quot;
+<pre><code>#&gt; [1] &quot;new127039fcc7e0&quot;  &quot;new12703448de49f&quot; &quot;new1270319e254a2&quot;
 </code></pre>
 <h2 id="sec:assertions-experimental">Assertions (Experimental)</h2>
 <p>Where better place for yet another implementation of bespoke assertion functions

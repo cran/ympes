@@ -519,13 +519,13 @@ Should the left (lower) bound be compared inclusively (\code{<=}) or exclusive (
 Should the right (upper) bound be compared inclusively (\code{>=}) or exclusive (\code{>}).}
 }
 \value{
-NULL if the assertion succeeds.
+If the assertion succeeds then the input is returned invisibly.
 
 Otherwise an error of class "ympes-error" (with optional subclass if supplied
 when calling the assertion).
 }
 \description{
-Assertions for function arguments. Motivated by \code{vctrs::vec_assert()} but
+Assertions for function arguments. Motivated by \code{\link[vctrs:vec_assert]{vctrs::vec_assert()}} but
 with lower overhead at a cost of less informative error messages. Designed to
 make it easy to identify the top level calling function whether used within a
 user facing function or internally. They are somewhat experimental in nature

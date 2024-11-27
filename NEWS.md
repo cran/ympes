@@ -1,3 +1,22 @@
+# ympes 1.7.0
+
+- `cc()` can once again send generative code for its output to the system
+  clipboard via the `.clip` argument. This functionality was previously 
+  removed in the 1.5.0 release due to unreliability in it's use on some
+  environments (e.g. RStudio on Fedora KDE Wayland session). Time seems to
+  have remedied the issue.
+
+- **breaking change:** If an assertion succeeds it now returns it's input
+  invisibly. This was to enable more concise casting, e.g
+  
+  ```
+  x <- 1.0
+  x <- as.integer(assert_integerish(x))
+  ```
+  
+- **breaking change:** `new_package()` and it's alias `np()` have been
+  completely removed from the package.
+
 # ympes 1.6.0
 
 - New function `new_name()` which generates unique names for additional data
