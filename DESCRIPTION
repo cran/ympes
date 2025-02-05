@@ -1,7 +1,7 @@
 Package: ympes
 Type: Package
 Title: Collection of Helper Functions
-Version: 1.7.0
+Version: 1.8.0
 Authors@R: c(
     person(
         given = "Tim",
@@ -36,10 +36,10 @@ Depends: R (>= 3.5.0)
 Imports: graphics, grDevices, methods, utils
 VignetteBuilder: litedown
 NeedsCompilation: no
-Packaged: 2024-11-27 10:48:08 UTC; tim
+Packaged: 2025-02-05 12:21:04 UTC; tim
 Author: Tim Taylor [aut, cre, cph] (<https://orcid.org/0000-0002-8587-7113>),
   R Core Team [cph] (fstrcapture uses code from strcapture),
   Toby Hocking [cph] (fstrcapture uses code from nc::capture_first_vec)
 Maintainer: Tim Taylor <tim.taylor@hiddenelephants.co.uk>
 Repository: CRAN
-Date/Publication: 2024-11-27 11:10:02 UTC
+Date/Publication: 2025-02-05 12:40:02 UTC
